@@ -20,7 +20,7 @@ async def start_hendler(message: Message):
 async def wiki_serch(message: Message) -> None:
     text = message.text.strip()
     try:
-        await message.answer(get_page(text))
+        await message.answer(await get_page(text))
     except TypeError:
         await message.answer("Nice try!")
 

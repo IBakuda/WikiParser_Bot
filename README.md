@@ -17,5 +17,5 @@ Telegram-бот на [aiogram 3](https://docs.aiogram.dev/), который ищ
 1. Клонируй репозиторий:
 
 ```bash
-git clone https://github.com/IBakuda/WikiParser_Bot
-cd wikipedia-bot
+git clone https://github.com/IBakuda/WikiParser_Bot.git
+cd WikiParser_Bot

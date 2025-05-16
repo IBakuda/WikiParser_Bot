@@ -1,0 +1,29 @@
+# Виртуальное окружение
+venv/
+env/
+.venv/
+
+# Файлы зависимостей pip
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Конфигурации IDE
+.vscode/
+.idea/
+
+# Секреты и настройки
+.env
+.env.*
+
+# Логи и временные файлы
+*.log
+*.sqlite3
+*.db
+.DS_Store
+Thumbs.db
+
+# PyInstaller
+dist/
+build/
+*.spec

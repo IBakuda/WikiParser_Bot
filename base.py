@@ -6,18 +6,19 @@ async def get_page(serch: str) -> str:
     url = f'https://ru.wikipedia.org/wiki/{serch}'
     try:
         async with aiohttp.ClientSession() as session:
-            async with session.get(url) as response:
+            async with session.get(url, allow_redirects=True) as response:
                 if response.status != 200:
                     return '❌ Статья не найдена. Проверь написание.'
 
                 html = await response.text()
                 soup = BeautifulSoup(html, 'lxml')
                 div = soup.find('div', id='mw-content-text')
-                first_p = div.find('p') if div else None
+                paragraphs = div.find_all('p', recursive=True) if div else []
 
-                if first_p and first_p.text.strip():
-                    text = first_p.text.strip()
-                    return text
+                for p in paragraphs:
+                    text = p.get_text(strip=True)
+                    if text and len(text) > 50:
+                        return text
                 else:
                     return "🧐 Статья пустая или не содержит текста."
     except Exception as e:
